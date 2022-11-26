@@ -89,12 +89,9 @@ UtfString_t *string_from_cstring(char *_str)
                 fprintf(stderr, "[UtfStringError] bad utf-8 size %d.\n", _size);
                 exit(1);
         }
-        
+
         _index += _size; _string->string[_iter] = _uc;
-        
-        if (_index < strlen(_str)) {
-            _string->string = realloc(_string->string, sizeof(codepoint) * (1 + (_iter + 1)));
-        }
+        _string->string = realloc(_string->string, sizeof(codepoint) * (1 + (_iter + 1)));
     }
 
     return _string;
