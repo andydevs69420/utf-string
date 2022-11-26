@@ -48,13 +48,11 @@ UtfString_t *string_from_cstring(char *_str)
     _string->string = 
         (codepoint*) malloc(sizeof(codepoint));
     
-    int _size = 0, _index = 0;
+    int _index = 0; codepoint _uc;
 
-    codepoint _uc;
-
-    while (_index < strlen(_str))
+    for (int _iter = 0; _index < strlen(_str); _iter++)
     {
-        _size = get_head_size(_str[_index]);
+        int _size = get_head_size(_str[_index]);
 
         switch(_size)
         {
@@ -91,10 +89,12 @@ UtfString_t *string_from_cstring(char *_str)
                 fprintf(stderr, "[UtfStringError] bad utf-8 size %d.\n", _size);
                 exit(1);
         }
-        _index += _size;
-
-        _string->string[_string->length - 1] = _uc;
-        _string->string = realloc(_string->string, sizeof(codepoint) * _string->length + 1);
+        
+        _index += _size; _string->string[_iter] = _uc;
+        
+        if (_index < strlen(_str)) {
+            _string->string = realloc(_string->string, sizeof(codepoint) * (1 + (_iter + 1)));
+        }
     }
 
     return _string;

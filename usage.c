@@ -2,8 +2,8 @@
 
 int main()
 {
-    UtfString_t *_s = string_from_cstring("ε 大😀 \xc0");
-    printf("len: %ld code: %s ID: %d\n", _s->length, string_charAt(_s, 2), string_isIdentifier("idꜻ"));
+    UtfString_t *_s = string_from_cstring("ε大😀ε大😀ε大😀ε大😀ε大😀ε大😀ε大😀ε大😀ε大😀ε大😀ε大");
+    printf("len: %ld code: %s\n", _s->length, string_charAt(_s, string_length(_s)-1));
 
     string_free(_s);
     
