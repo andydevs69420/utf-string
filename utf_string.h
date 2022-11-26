@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include <math.h>
+#include "utf_data.h"
 
 #ifndef UTF_STRING_H
 #define UTF_STRING_H

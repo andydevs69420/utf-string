@@ -36,7 +36,6 @@ int get_utf_size(codepoint _chr)
     return 0;
 }
 
-
 /**
  * Creates utf string from char pointer.
  * @param char *_str
@@ -183,9 +182,3 @@ void string_free(UtfString_t *_str)
     free(_str);
 }
 
-
-// TODO: 
-// [1]. add feature
-//      - string_isidentifier
-//      - string_toUpperCase
-//      - string_toLowerCase
