@@ -42,6 +42,7 @@ typedef struct utf_string
 UtfString_t *string_from_cstring(char*);
 char *string_charAt(UtfString_t *, size_t);
 codepoint string_charCodePointAt(UtfString_t*, size_t);
+size_t string_length(UtfString_t*);
 void string_free(UtfString_t*);
 
 #ifdef __cplusplus

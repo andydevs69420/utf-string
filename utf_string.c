@@ -1,3 +1,10 @@
+/**
+ * Utf String 
+ * Author: andydevs69420
+ * Git: https://github.com/andydevs69420/utf-string.git
+ * copyright © andydevs69420 2022
+ **/
+
 #include "utf_string.h"
 
 static
@@ -82,7 +89,7 @@ UtfString_t *string_from_cstring(char *_str)
                 break;
 
             default:
-                fprintf(stderr, "Bad utf-8 size %d\n", _size);
+                fprintf(stderr, "[UtfStringError] bad utf-8 size %d.\n", _size);
                 exit(1);
         }
         _index += _size;
@@ -150,12 +157,20 @@ char *string_charAt(UtfString_t *_str, size_t _index)
 codepoint string_charCodePointAt(UtfString_t *_str, size_t _index)
 { 
     if (_str->length <= 0 || !(_index >= 0 && _index < _str->length))
-    {   fprintf(stderr, "[UtfStringError] index out of bounds 0~%ld, got %ld\n", _str->length, _index);
+    {   fprintf(stderr, "[UtfStringError] index out of bounds 0~%ld, got %ld.\n", _str->length, _index);
         exit(1);
     }
 
     return _str->string[_index];
 }
+
+/**
+ * Returns the length of the string.
+ * @param UtfString_t *_str
+ * @returns size_t
+ **/
+size_t string_length(UtfString_t *_str)
+{ return _str->length; }
 
 /**
  * Deallocate UtfString_t
@@ -167,3 +182,10 @@ void string_free(UtfString_t *_str)
     free(_str->string);
     free(_str);
 }
+
+
+// TODO: 
+// [1]. add feature
+//      - string_isidentifier
+//      - string_toUpperCase
+//      - string_toLowerCase
